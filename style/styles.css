@@ -6,14 +6,21 @@
     box-sizing: border-box;
     text-decoration: none;
     color: white;
+    transition: var(--transition);
 }
 
 :root {
   /*main colors*/
-	--primary: #f7aa24;
-    --secondary: rgb(000, 000, 000, 70%);
+	--primary: gray;
+    --secondary: rgb(000, 000, 000, 80%);
+    --headerTransparency: rgb(0,0,0,0.45);
     --blackFade: rgb(0,0,0,0.3);
-    --space: 2% 15% 0% 15%;
+    --space: 0% 10% 0% 10%;
+    --border: 2px solid var(--primary);
+    --animation-duration: 0.7s;
+    --blur-radius: 40px;
+    --p-font:  1.1rem;
+    --transition: all 1.0s ease;
 }
 
 #canv {
@@ -30,26 +37,16 @@ body {
     justify-content: space-between;
     flex-direction: column;
     font-family: monospace;
-    gap: 20px;
+    gap: 40px;
 }
 
 .header{
     z-index: 2;
-    background: radial-gradient(ellipse at bottom, var(--blackFade) 65%, var(--primary));
+    background: var(--headerTransparency);
+    border-bottom: 1px solid var(--primary);
     padding: var(--space);
     display: flex;
     justify-content: space-between;
-}
-
-.headerMenu{
-    max-width: 30%;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.headerMenuBtn{
-    background-color: var(--secondary);
 }
 
 .headerDiv{
@@ -81,7 +78,7 @@ body {
 }
 
 .headerFlagsArrow{
-    transition: all 0.5s ease;
+    transition: var(--transition);
 }
 
 .container {
@@ -94,8 +91,7 @@ body {
     align-items: center;
     justify-content: space-between;
     z-index: 1;
-    max-width: 70%;
-    border: 2px solid var(--primary);
+    border: var(--border);
 }
 
 h1{
@@ -107,7 +103,7 @@ h2{
 }
 
 p{
-    font-size: 1.1rem;
+    font-size: var(--p-font);
 }
   
 .destaque{
@@ -116,10 +112,33 @@ p{
 }
 
 .containerSection{
-    width: 60%;
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.containerInput{
+    width: 70%;
+}
+
+.containerSectionTextarea{
+    all: unset;
+    transition: all 1.5s ease;
+    border: var(--border);
+    padding: 1rem;
+    background: transparent;
+    font-size: var(--p-font);
+    resize: none;
+    overflow-wrap: break-word;
+}
+
+.containerSectionTextarea:focus{
+    animation: pulsate var(--animation-duration) infinite alternate;
+}
+
+.containerResult{
+    width: 30%;
+    align-items: center;
 }
 
 .containerImg{
@@ -129,9 +148,9 @@ p{
     border: 2px solid var(--primary);
 }
 
-.containerSectionButtons{
+.containerSectionDiv{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
@@ -139,59 +158,47 @@ p{
 }
 
 .Btn{
+    all: unset;
+    cursor: pointer;
     color: var(--primary);
-    border: 2px solid var(--primary);
+    border: var(--border);
     border-radius: 10px;
     padding: 5px 20px;
     font-size: 1.25rem;
     transition: 0.3s linear;
     text-align: center;
     font-weight: 600;
-    width: 100%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
 }
 
-.Btn:hover{
+.Btn[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.descriptografar{   
     background-color: var(--primary);
     color: var(--secondary);
 }
 
-.containerSectionButtonsIcons::before{
-    display: inline-block;
-}
-
-.github:hover::before{
-    content: url('../assets/github-black.png');
-}
-
-.github::before{
-    content: url('../assets/github.png');
-}
-
-.instagram:hover::before{
-    content: url('../assets/instagram-black.png');
-}
-
-.instagram::before{
-    content: url('../assets/instagram.png');
-}
-
-.linkedin:hover::before{
-    content: url('../assets/linkedin-black.png');
-}
-
-.linkedin::before{
-    content: url('../assets/linkedin.png');
-}
-
 .footer{
     z-index: 1;
-    background: radial-gradient(ellipse at top, var(--blackFade) 65%, var(--primary));
+    background: var(--headerTransparency);
+    border-top: 1px solid var(--primary);
     text-align: center;
     padding: 24px;
+}
+
+@keyframes pulsate {
+    from {
+        box-shadow: none;
+    }
+    to {
+        box-shadow: 0 0 var(--blur-radius) var(--primary);
+    }
 }
 
 @media screen and (max-width: 750px) {
@@ -203,7 +210,7 @@ p{
         gap: 5px;
     }
     .container {
-        flex-direction: column-reverse;
+        flex-direction: column;
         padding: 1rem;
     }
     h1{
@@ -218,10 +225,13 @@ p{
     .containerSection{
         width: 100%;
     }
-    .containerImg{
-        width: 80%;
+    .containerSectionDiv{
+        flex-direction: column;
     }
     .Btn{
         font-size: 0.85rem;
+    }
+    .containerResultImg{
+        display: none;
     }
 }
