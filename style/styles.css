@@ -49,6 +49,10 @@ body {
     justify-content: space-between;
 }
 
+#logo {
+    filter: grayscale(100%);
+}
+
 .headerDiv{
     display: flex;
     align-items: center;
