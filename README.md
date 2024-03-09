@@ -27,7 +27,7 @@ https://github.com/heitor34studio/heitor34studio.github.io/assets/72997122/4f94a
 
 ## 📁 Acesso ao projeto
 
-[Veja o projeto final em funcionamento.](https://heitor34studio.github.io)
+[Veja o projeto final do curso em funcionamento.](https://heitor34studio.github.io)
 Neste repositório você tem acesso a todo o material da ferramenta.
 
 ## 🛠️ Abrir e rodar o projeto
