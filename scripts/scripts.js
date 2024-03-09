@@ -206,6 +206,7 @@ var focusColor = '#fff';
 document.getElementById('input').addEventListener("focus", function() {
   focusColor = '#a40606';
   document.documentElement.style.setProperty('--primary', '#a40606');
+  document.getElementById('logo').style.setProperty('filter','grayscale(0%)');
   if(document.querySelector('.containerResultImg')) {
     document.querySelector('.containerResultImg').style.filter = 'brightness(1.4)';
   }
@@ -213,6 +214,7 @@ document.getElementById('input').addEventListener("focus", function() {
 
 document.getElementById('input').addEventListener("blur", function() {
   focusColor = '#fff';
+  document.getElementById('logo').style.setProperty('filter','grayscale(100%)');
   document.documentElement.style.setProperty('--primary', 'gray');
   if(document.querySelector('.containerResultImg')) {
     document.querySelector('.containerResultImg').style.filter = '';
