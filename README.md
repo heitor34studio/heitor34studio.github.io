@@ -1,4 +1,6 @@
+![DECODIFICADOR-min](https://github.com/heitor34studio/heitor34studio.github.io/assets/72997122/c6bf45bf-9120-4222-9f77-769e53d7ac56)
 # Decodificador Projeto Alura
+
 
 O projeto Decodificador, é uma ferramenta que codifica e descodifica textos que o usuário inserir, utilizando uma chave matriz própria do projeto, e permite o usuário copiar o resultado final.
 
